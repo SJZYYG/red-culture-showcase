@@ -2835,11 +2835,140 @@
         display: block;
       }
 
+      .archive-section.static-receipt .receipt-theater {
+        display: grid;
+        place-items: center;
+        padding: clamp(72px, 9vw, 104px) 20px 78px;
+      }
+
       .receipt-webgl-frame {
         position: absolute;
         inset: 0;
         border-radius: inherit;
         overflow: hidden;
+      }
+
+      .archive-section.static-receipt .receipt-webgl-frame {
+        display: none;
+      }
+
+      .receipt-static-flyer {
+        position: relative;
+        z-index: 3;
+        display: none;
+        width: min(560px, 82vw);
+        min-height: 720px;
+        padding: 54px 46px 42px;
+        border-radius: 16px 16px 34px 34px;
+        color: #68130f;
+        background:
+          linear-gradient(90deg, rgba(152, 88, 34, 0.08) 0 1px, transparent 1px 48px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.16) 36%, rgba(206, 154, 78, 0.18)),
+          linear-gradient(180deg, #fff7d8 0%, #f7d79a 100%);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.75),
+          inset 0 -20px 52px rgba(115, 51, 21, 0.12),
+          0 28px 70px rgba(0,0,0,0.32),
+          0 0 0 1px rgba(117, 52, 26, 0.12);
+        transform: rotate(-1.2deg);
+      }
+
+      .archive-section.static-receipt .receipt-static-flyer {
+        display: block;
+      }
+
+      .receipt-static-flyer::before {
+        content: "";
+        position: absolute;
+        inset: 18px 24px auto;
+        height: 26px;
+        border-radius: 999px;
+        background:
+          linear-gradient(180deg, rgba(255, 246, 220, 0.92), rgba(184, 129, 63, 0.32)),
+          linear-gradient(90deg, rgba(90, 19, 14, 0.18), transparent, rgba(90, 19, 14, 0.2));
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.82),
+          inset 0 -1px 0 rgba(84, 22, 13, 0.2),
+          0 10px 22px rgba(0,0,0,0.18);
+      }
+
+      .receipt-static-head {
+        position: relative;
+        padding-bottom: 20px;
+        border-bottom: 1px dashed rgba(104, 19, 15, 0.24);
+      }
+
+      .receipt-static-title {
+        font-size: clamp(24px, 4vw, 34px);
+        font-weight: 950;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .receipt-static-subtitle {
+        margin-top: 8px;
+        color: rgba(104, 19, 15, 0.62);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .receipt-static-list {
+        display: grid;
+        gap: 11px;
+        margin-top: 24px;
+      }
+
+      .receipt-static-row {
+        padding: 15px 16px;
+        border-radius: 12px;
+        background: rgba(137, 61, 27, 0.075);
+        border: 1px solid rgba(104, 19, 15, 0.06);
+      }
+
+      .receipt-static-index {
+        font-size: 13px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .receipt-static-row-title {
+        margin-top: 4px;
+        font-size: 17px;
+        font-weight: 950;
+      }
+
+      .receipt-static-row-desc {
+        margin-top: 6px;
+        color: rgba(104, 19, 15, 0.72);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .receipt-static-items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px 12px;
+        margin-top: 8px;
+        color: rgba(104, 19, 15, 0.62);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .receipt-static-items span::before {
+        content: "· ";
+      }
+
+      .receipt-static-foot {
+        margin-top: 24px;
+        padding-top: 16px;
+        border-top: 1px dashed rgba(104, 19, 15, 0.2);
+        color: rgba(104, 19, 15, 0.54);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
       }
 
       #receipt-webgl {
@@ -2919,6 +3048,10 @@
         overflow: hidden;
         clip: rect(0 0 0 0);
         clip-path: inset(50%);
+      }
+
+      .archive-section.static-receipt .receipt-fallback {
+        display: none;
       }
 
       .modal {
@@ -4037,16 +4170,45 @@
         }
 
         .receipt-theater {
-          display: none !important;
+          min-height: min(680px, 138vw);
+          padding: 0;
+          border-radius: 24px;
         }
 
-        .archive-section.webgl-ready .receipt-fallback {
-          position: static;
-          width: auto;
-          height: auto;
-          overflow: visible;
-          clip: auto;
-          clip-path: none;
+        .archive-section.static-receipt .receipt-theater {
+          display: grid !important;
+          padding: 64px 12px 54px;
+        }
+
+        .receipt-static-flyer {
+          width: min(430px, 88vw);
+          min-height: 0;
+          padding: 48px 20px 26px;
+          border-radius: 14px 14px 26px 26px;
+          transform: none;
+        }
+
+        .receipt-static-list {
+          gap: 9px;
+          margin-top: 18px;
+        }
+
+        .receipt-static-row {
+          padding: 12px;
+        }
+
+        .receipt-static-row-title {
+          font-size: 15px;
+        }
+
+        .receipt-static-row-desc {
+          font-size: 12px;
+          line-height: 1.58;
+        }
+
+        .receipt-static-items {
+          grid-template-columns: 1fr;
+          font-size: 11px;
         }
 
         .modal-dialog {
@@ -4406,6 +4568,7 @@
             <div class="receipt-webgl-frame">
               <canvas id="receipt-webgl"></canvas>
             </div>
+            <div class="receipt-static-flyer" id="receipt-static-flyer" aria-label="红色知识宣传单"></div>
             <div class="receipt-shadow" aria-hidden="true"></div>
           </div>
           <div class="knowledge-grid receipt-fallback" id="knowledge-grid"></div>
@@ -4463,13 +4626,13 @@
     </button>
     </div>
 
+    <script src="./vendor/three.min.js"></script>
     <script src="./red-culture-data.js"></script>
     <script>
       const data = window.RED_CULTURE_DATA;
       const items = data.items;
       const hallState = { active: data.halls[0].id };
       let archiveReceiptApi = null;
-      let threeLoadPromise = null;
 
       const themeNames = {
         overview: "红色概览",
@@ -5094,30 +5257,64 @@
       }
 
       function shouldUseArchiveWebGL() {
-        return !window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)").matches;
+        return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       }
 
       function loadThreeLibrary() {
         if (window.THREE) return Promise.resolve(window.THREE);
-        if (threeLoadPromise) return threeLoadPromise;
-        threeLoadPromise = new Promise((resolve, reject) => {
-          const script = document.createElement("script");
-          script.src = "./vendor/three.min.js";
-          script.async = true;
-          script.onload = () => resolve(window.THREE);
-          script.onerror = () => reject(new Error("three-load-failed"));
-          document.head.appendChild(script);
-        }).catch((error) => {
-          threeLoadPromise = null;
-          throw error;
+        return new Promise((resolve, reject) => {
+          let attempts = 0;
+          const waitForGlobal = () => {
+            if (window.THREE) {
+              resolve(window.THREE);
+              return;
+            }
+            attempts += 1;
+            if (attempts > 40) {
+              reject(new Error("three-not-ready"));
+              return;
+            }
+            window.setTimeout(waitForGlobal, 50);
+          };
+          waitForGlobal();
         });
-        return threeLoadPromise;
+      }
+
+      function renderStaticReceipt(entries) {
+        const archive = document.getElementById("archive");
+        const flyer = document.getElementById("receipt-static-flyer");
+        if (!archive || !flyer) return;
+        flyer.innerHTML = `
+          <div class="receipt-static-head">
+            <div class="receipt-static-title">${data.sections.archive.title || "红色知识 经纬成章"}</div>
+            <div class="receipt-static-subtitle">Thermal Exhibition Receipt / Red Culture Index</div>
+          </div>
+          <div class="receipt-static-list">
+            ${entries
+              .map(
+                (entry, index) => `
+                  <section class="receipt-static-row">
+                    <div class="receipt-static-index">${String(index + 1).padStart(2, "0")} ${entry.label}</div>
+                    <div class="receipt-static-row-title">${entry.title}</div>
+                    <div class="receipt-static-row-desc">${entry.desc}</div>
+                    <div class="receipt-static-items">
+                      ${entry.items.slice(0, 4).map((item) => `<span>${item}</span>`).join("")}
+                    </div>
+                  </section>
+                `
+              )
+              .join("")}
+          </div>
+          <div class="receipt-static-foot">Archive Copy · Study / Display / Exchange</div>
+        `;
+        archive.classList.add("static-receipt");
       }
 
       function scheduleArchiveReceipt(entries) {
         const archive = document.getElementById("archive");
         if (!archive || !shouldUseArchiveWebGL()) {
           archive?.classList.remove("webgl-ready");
+          renderStaticReceipt(entries);
           return;
         }
 
@@ -5126,26 +5323,20 @@
             .then(() => {
               if (archiveReceiptApi) archiveReceiptApi.dispose();
               archiveReceiptApi = initArchiveReceipt(entries);
+              if (!archiveReceiptApi) renderStaticReceipt(entries);
             })
-            .catch(() => archive.classList.remove("webgl-ready"));
+            .catch(() => {
+              archive.classList.remove("webgl-ready");
+              renderStaticReceipt(entries);
+            });
         };
 
-        if ("IntersectionObserver" in window) {
-          let started = false;
-          const observer = new IntersectionObserver(
-            (observerEntries) => {
-              if (started || !observerEntries.some((entry) => entry.isIntersecting)) return;
-              started = true;
-              observer.disconnect();
-              start();
-            },
-            { rootMargin: "520px 0px", threshold: 0.01 }
-          );
-          observer.observe(archive);
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(start, { timeout: 800 });
           return;
         }
 
-        window.setTimeout(start, 1200);
+        window.setTimeout(start, 0);
       }
 
       function createReceiptTexture(entries) {
@@ -5260,7 +5451,7 @@
           archive?.classList.remove("webgl-ready");
           return null;
         }
-        if (window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)").matches) {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           archive.classList.remove("webgl-ready");
           return null;
         }
@@ -5278,6 +5469,7 @@
           return null;
         }
 
+        archive.classList.remove("static-receipt");
         archive.classList.add("webgl-ready");
 
         const scene = new THREE.Scene();
@@ -5449,7 +5641,7 @@
         }
 
         function grabReceipt(event) {
-          if (event.button !== 0) return;
+          if (event.pointerType === "mouse" && event.button !== 0) return;
           const hit = hitReceipt(event);
           if (!hit?.uv) return;
           const col = clamp(Math.round(hit.uv.x * cols), 0, cols);
